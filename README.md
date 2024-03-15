@@ -18,7 +18,15 @@ arduino-cli config add board_manager.additional_urls https://github.com/earlephi
 arduino-cli core update-index
 arduino-cli core install rp2040:rp2040
 ```
-This board is now available as `adafruit_feather_rfm`
+This board is now available as `rp2040:rp2040:adafruit_feather_rfm`
+
+Install the RadioHead library from AdaFruit's repo:
+First, edit `~/.arduino15/arduino-cli.yaml` and set `enable_unsafe_install` to `true`
+```
+cd
+wget https://github.com/adafruit/RadioHead/archive/master.zip
+arduino-cli lib install --zip-path ~/master.zip
+```
 
 Compile the sketch and flash the rp2040:
 - Clone this repo.
@@ -27,6 +35,8 @@ Compile the sketch and flash the rp2040:
 - Connect the rp2040 to the rpi via USB.
 - Get the right port from `arduino-cli board list`, e.g. `/dev/ttyACM0`
 - Flash: `arduino-cli upload -p /dev/ttyACM0 --fqbn rp2040:rp2040:adafruit_feather_rfm controller`
+
+Serial monitor: `arduino-cli monitor -p /dev/ttyACM01`
 
 
 ## Boids
