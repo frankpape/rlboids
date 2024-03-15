@@ -20,6 +20,15 @@ arduino-cli core install rp2040:rp2040
 ```
 This board is now available as `adafruit_feather_rfm`
 
+Compile the sketch and flash the rp2040:
+- Clone this repo.
+- `cd rlboids`
+- Compile the sketch: `arduino-cli compile --fqbn rp2040:rp2040:adafruit_feather_rfm controller`
+- Connect the rp2040 to the rpi via USB.
+- Get the right port from `arduino-cli board list`, e.g. `/dev/ttyACM0`
+- Flash: `arduino-cli upload -p /dev/ttyACM0 --fqbn rp2040:rp2040:adafruit_feather_rfm controller`
+
+
 ## Boids
 A **boid** is a small rover driven by another Feather RP2040 RFM69, which receives position and orientation information from the controller.
 
